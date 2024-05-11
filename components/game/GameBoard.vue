@@ -1,5 +1,14 @@
 <script lang="ts" setup>
 import type { BoardCell, BoardCellHistory, Cell, Player } from '~/types/IGameBoard';
+import happyPop from "../../public/sound/happy-pop-2-185287.mp3"
+import papercrackle from "../../public/sound/papercrackle3-36110.mp3"
+import winnerSound from "../../public/sound/sound-effect-twinklesparkle-115095.mp3"
+
+const bubble = useSound(happyPop)
+const paper = useSound(papercrackle)
+const win = useSound(winnerSound)
+
+const { vibrate, isSupported } = useVibrate({ pattern: [300, 100, 300] })
 
 const emit = defineEmits<{
 	(e: 'update:player-turn', value: number): void
@@ -19,6 +28,29 @@ const { playerDraw } = useGameplayControl(boards, history, playerTurn, {
 	onPlayerTurn(value) {
 		emit('update:player-turn', value)
 	},
+	onPlayerDraw(playerIndex) {
+		if(playerIndex == 0){
+			if(bubble.isPlaying.value){
+				bubble.stop()
+			}
+			bubble.play()
+		} else {
+			if(paper.isPlaying){
+				paper.stop()
+			}
+			paper.play()
+		}
+
+		if(isSupported.value){
+			vibrate()
+		}
+	},
+	onWin(){
+		if(win.isPlaying.value){
+			win.stop()
+		}
+		win.play()
+	}
 })
 
 const drawCell = (position: {x: Cell, y: Cell})=>{
@@ -46,7 +78,7 @@ onMounted(()=>{
 					'hover:ring-rose-800': cell.value === 'x' && !cell.mark,
 					'!bg-blue-800 hover:ring-0': cell.value === 'o' && cell.mark,
 					'!bg-rose-800 hover:ring-0': cell.value === 'x' && cell.mark,
-					'!fill-slate-600 delay-500': cell.deprecated
+					'!fill-slate-600 delay-200': cell.deprecated
 				}
 			]">
 			<div v-if="cell.value === 'x'">

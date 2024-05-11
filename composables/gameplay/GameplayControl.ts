@@ -7,6 +7,7 @@ import type {
 
 interface Options {
   onPlayerTurn?: (value: number) => void,
+  onPlayerDraw?: (value: number) => void,
   onWin?: () => void
 }
 export const useGameplayControl = (
@@ -168,6 +169,8 @@ export const useGameplayControl = (
         value: board.value[cellIndex].value,
         created_at: new Date().getTime(),
       });
+
+      options?.onPlayerDraw && options.onPlayerDraw(playerTurn.value)
 
       switchTurn();
       checkLines();
