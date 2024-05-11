@@ -1,7 +1,7 @@
 import type { BoardCell, BoardCellHistory, Cell, Player } from "~/types/IGameBoard"
 
 interface Options {
-  onPlayerTurn?: (value: number) => void
+  onPlayerTurn?: (value: number) => void,
 }
 export const useGameplayControl = (board: Ref<BoardCell[]>, history: Ref<BoardCellHistory[]>, playerTurn: Ref<number>, options?: Options) => {
 
@@ -20,16 +20,31 @@ export const useGameplayControl = (board: Ref<BoardCell[]>, history: Ref<BoardCe
      * 
      */
     const cellIndex = board.value.findIndex(e => e.x === position.x && e.y === position.y)
-    board.value[cellIndex].value = player.side === 'blue' ? 'o' : 'x'
-
-    history.value.push({
-      x: position.x,
-      y: position.y,
-      player: player,
-      value: board.value[cellIndex].value,
-      created_at: new Date().getTime()
-    })
-    switchTurn()
+    /**
+     * check if the cell is empty
+     * 
+     */
+    if(board.value[cellIndex].value == null){
+      /**
+       * set cell value
+       * 
+       */
+      board.value[cellIndex].value = player.side === 'blue' ? 'o' : 'x'
+  
+      history.value.push({
+        x: position.x,
+        y: position.y,
+        player: player,
+        value: board.value[cellIndex].value,
+        created_at: new Date().getTime()
+      })
+      switchTurn()
+    } else {
+      /**
+       * can't set value
+       * 
+       */
+    }
   }
 
   return {
