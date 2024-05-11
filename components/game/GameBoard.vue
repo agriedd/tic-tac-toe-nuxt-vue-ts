@@ -40,10 +40,12 @@ onMounted(()=>{
 			class="bg-slate-800 rounded-lg text-white flex flex-col justify-center items-center fill-slate-100 transition-all cursor-pointer hover:ring"
 			:class="[
 				{
-					'hover:ring-blue-800 active:bg-blue-900': playerTurn === 0 && cell.value === null,
-					'hover:ring-rose-800 active:bg-rose-900': playerTurn === 1 && cell.value === null,
-					'hover:ring-blue-800': cell.value === 'o',
-					'hover:ring-rose-800': cell.value === 'x',
+					'hover:ring-blue-800 active:bg-blue-900': playerTurn === 0 && cell.value === null && !cell.mark,
+					'hover:ring-rose-800 active:bg-rose-900': playerTurn === 1 && cell.value === null && !cell.mark,
+					'hover:ring-blue-800': cell.value === 'o' && !cell.mark,
+					'hover:ring-rose-800': cell.value === 'x' && !cell.mark,
+					'!bg-blue-800 hover:ring-0': cell.value === 'o' && cell.mark,
+					'!bg-rose-800 hover:ring-0': cell.value === 'x' && cell.mark,
 				}
 			]">
 			<div v-if="cell.value === 'x'">
