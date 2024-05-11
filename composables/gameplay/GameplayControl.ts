@@ -92,11 +92,16 @@ export const useGameplayControl = (
 
   };
 
+  const resetGame = ()=>{
+    board.value = generateEmpty()
+    history.value = []
+    winner = false
+  }
+
   const playerDraw = (player: Player, position: { x: Cell; y: Cell }): void => {
 
     if(winner){
-      board.value = generateEmpty()
-      winner = false
+      resetGame()
       return
     }
 
