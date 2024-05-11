@@ -44,7 +44,7 @@ export const useGameplayControl = (
     const lastSideDraw = playerTurn.value === 0 ? "x" : "o";
     const lastSideLines = board.value
       .map((e, i) => ({ i, ...e }))
-      .filter((e) => e.value === lastSideDraw)
+      .filter((e) => e.value === lastSideDraw && !e.deprecated)
       .map((e) => e.i);
 
     const stacks: {cond: number, point: number}[] = []
@@ -98,6 +98,42 @@ export const useGameplayControl = (
     winner = false
   }
 
+  const checkMaxBoard = ()=>{
+    const lastSideDraw = playerTurn.value === 0 ? "x" : "o";
+    const curentSideDraw = playerTurn.value === 0 ? "o" : "x";
+    const playerDraws = board.value.filter(e => e.value === lastSideDraw).length
+    /**
+     * if last player draw is greater or equal to 3 then set deprecated to it
+     * and remove the current player deprecate draw
+     * 
+     */
+    if(playerDraws >= 3){
+      /**
+       * set oldest player's draw to deprecated
+       * 
+       */
+      
+      const playerDrawHistories = history.value.filter(e => e.value === curentSideDraw)
+      const oldestPlayerDraw = playerDrawHistories.reverse().find((_e, i) => i == 2)
+
+      board.value.forEach((cell, cellIndex) => {
+        if(cell.x === oldestPlayerDraw?.x && cell.y === oldestPlayerDraw?.y){
+          board.value[cellIndex].deprecated = true
+        }
+      })
+    }
+    
+    board.value.forEach((cell, cellIndex) => {
+      if(cell.deprecated === true && cell.value === lastSideDraw){
+        /**
+         * remove deprecated
+         * 
+         */
+        board.value[cellIndex].value = null
+      }
+    })
+  }
+
   const playerDraw = (player: Player, position: { x: Cell; y: Cell }): void => {
 
     if(winner){
@@ -116,12 +152,14 @@ export const useGameplayControl = (
      * check if the cell is empty
      *
      */
-    if (board.value[cellIndex].value == null) {
+    if (board.value[cellIndex].value == null || board.value[cellIndex].deprecated) {
       /**
+       * 
        * set cell value
        *
        */
       board.value[cellIndex].value = player.side === "blue" ? "o" : "x";
+      board.value[cellIndex].deprecated = undefined
 
       history.value.push({
         x: position.x,
@@ -130,8 +168,11 @@ export const useGameplayControl = (
         value: board.value[cellIndex].value,
         created_at: new Date().getTime(),
       });
+
       switchTurn();
       checkLines();
+      checkMaxBoard();
+
     } else {
       /**
        * can't set value

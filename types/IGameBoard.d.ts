@@ -5,7 +5,8 @@ export interface BoardCell {
 	x: Cell,
 	y: Cell,
 	value: Draw,
-	mark: boolean
+	mark: boolean,
+	deprecated?: boolean
 }
 export interface BoardCellHistory {
 	x: Cell,

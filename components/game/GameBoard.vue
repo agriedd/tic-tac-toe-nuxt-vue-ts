@@ -46,6 +46,7 @@ onMounted(()=>{
 					'hover:ring-rose-800': cell.value === 'x' && !cell.mark,
 					'!bg-blue-800 hover:ring-0': cell.value === 'o' && cell.mark,
 					'!bg-rose-800 hover:ring-0': cell.value === 'x' && cell.mark,
+					'!fill-slate-600 delay-500': cell.deprecated
 				}
 			]">
 			<div v-if="cell.value === 'x'">
