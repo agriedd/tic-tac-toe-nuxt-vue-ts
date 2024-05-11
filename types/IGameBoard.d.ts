@@ -4,7 +4,8 @@ export type Draw = 'x' | 'o' | null
 export interface BoardCell {
 	x: Cell,
 	y: Cell,
-	value: Draw
+	value: Draw,
+	mark: boolean
 }
 export interface BoardCellHistory {
 	x: Cell,

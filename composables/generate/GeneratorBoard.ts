@@ -17,7 +17,8 @@ export const useGeneratorBoard = () => {
       result.push({
         x: xIndex,
         y: yIndex,
-        value
+        value,
+        mark: false,
       })
     }
 
@@ -38,7 +39,8 @@ export const useGeneratorBoard = () => {
       result.push({
         x: xIndex,
         y: yIndex,
-        value
+        value,
+        mark: false
       })
     }
 
