@@ -7,7 +7,25 @@ const playerTurnUpdated = (value: number) => {
 
 </script>
 <template>
-	<div class="bg-red-300">
-		Hello
+	<div class="bg-slate-950 min-h-screen text-white flex flex-col items-center">
+		<div class="max-w-sm w-full h-screen flex flex-col justify-center gap-2 p-2">
+			<div class="p-6 bg-slate-900 rounded-lg rotate-180 grow transition-all" :class="[
+				{
+					'ring ring-rose-400': playerTurn === 1
+				}
+			]">
+				Player 2
+			</div>
+			<div>
+				<!-- <GameBoard @update:player-turn="playerTurnUpdated"></GameBoard> -->
+			</div>
+			<div class="p-6 bg-slate-900 rounded-lg grow transition-all" :class="[
+				{
+					'ring ring-blue-400': playerTurn === 0
+				}
+			]">
+				Player 1
+			</div>
+		</div>
 	</div>
 </template>

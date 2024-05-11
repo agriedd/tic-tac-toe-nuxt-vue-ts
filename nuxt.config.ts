@@ -7,9 +7,12 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["composables/**"],
   },
-  // devServer: {
-  //   host: "192.168.1.9",
-  // },
+  devServer: {
+    host: "192.168.1.9",
+  },
+  app: {
+    baseURL: '/tic-tac-toe-nuxt-vue-ts',
+  },
   vite: {
     optimizeDeps: {
       include: ["howler"],
