@@ -16,6 +16,8 @@ export const useGameplayControl = (
   options?: Options
 ) => {
 
+  let winner: boolean = false
+
   const winConds = [
     [0,1,2],
     [3,4,5],
@@ -26,6 +28,8 @@ export const useGameplayControl = (
     [0,4,8],
     [2,4,6],
   ]
+
+  const { generateEmpty } = useGeneratorBoard()
 
   const switchTurn = () => {
     /**
@@ -44,7 +48,6 @@ export const useGameplayControl = (
       .map((e) => e.i);
 
     const stacks: {cond: number, point: number}[] = []
-    let winner: boolean = false
 
     lastSideLines.forEach(e => {
       winConds.forEach((conds, condIndex) => {
@@ -90,6 +93,13 @@ export const useGameplayControl = (
   };
 
   const playerDraw = (player: Player, position: { x: Cell; y: Cell }): void => {
+
+    if(winner){
+      board.value = generateEmpty()
+      winner = false
+      return
+    }
+
     /**
      * find cell target
      *
