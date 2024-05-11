@@ -9,9 +9,9 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["composables/**"],
   },
-  devServer: {
-    host: "192.168.1.9",
-  },
+  // devServer: {
+  //   host: "192.168.1.9",
+  // },
   vite: {
     optimizeDeps: {
       include: ["howler"],
@@ -32,4 +32,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    prerender: {
+      failOnError: true
+    }
+  }
 });
