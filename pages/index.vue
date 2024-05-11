@@ -7,7 +7,7 @@ const playerTurnUpdated = (value: number) => {
 
 </script>
 <template>
-	<div>
+	<div class="bg-red-300">
 		Hello
 	</div>
 </template>
