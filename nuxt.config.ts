@@ -18,8 +18,11 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: false,
-      failOnError: false,
-      routes: []
+      routes: [
+        '/404.html',
+        '/index.html',
+      ],
+
     },
   }
 });
