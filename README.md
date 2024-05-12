@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Tic Tac Toe Nuxt App
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![demo](docs/assets/demo-2024-05-12.gif)
+
+Inspired by this product https://giiker.com/products/tic-tac-toe-bolt
 
 ## Setup
 
@@ -72,4 +74,3 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
