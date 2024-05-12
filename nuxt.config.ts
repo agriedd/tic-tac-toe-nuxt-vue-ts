@@ -2,6 +2,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: false,
+  app: {
+    baseURL: '/tic-tac-toe-nuxt-vue-ts',
+    // buildAssetsDir: 
+  },
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   imports: {
     dirs: ["composables/**"],
@@ -9,20 +13,17 @@ export default defineNuxtConfig({
   // devServer: {
   //   host: "192.168.1.9",
   // },
-  app: {
-    baseURL: '/tic-tac-toe-nuxt-vue-ts',
-  },
   vite: {
     optimizeDeps: {
       include: ["howler"],
     },
   },
-  nitro: {
-    prerender: {
-      // crawlLinks: false,
-      // routes: [
-      // ],
+  // nitro: {
+  //   prerender: {
+  //     // crawlLinks: false,
+  //     // routes: [
+  //     // ],
 
-    },
-  }
+  //   },
+  // }
 });
