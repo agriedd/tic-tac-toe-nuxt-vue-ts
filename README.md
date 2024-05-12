@@ -2,7 +2,11 @@
 
 ![demo](docs/assets/demo-2024-05-12.gif)
 
-Inspired by this product https://giiker.com/products/tic-tac-toe-bolt
+Inspired by this product <https://giiker.com/products/tic-tac-toe-bolt>
+
+## Demo
+
+<https://agriedd.github.io/tic-tac-toe-nuxt-vue-ts/>
 
 ## Setup
 
@@ -73,4 +77,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
