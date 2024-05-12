@@ -18,12 +18,17 @@ export default defineNuxtConfig({
       include: ["howler"],
     },
   },
-  // nitro: {
-  //   prerender: {
-  //     // crawlLinks: false,
-  //     // routes: [
-  //     // ],
+  nitro: {
+    runtimeConfig: {
+      app:{
+        baseURL: 'tic-tac-toe-nuxt-vue-ts',
+      }
+    },
+    prerender: {
+      // crawlLinks: false,
+      // routes: [
+      // ],
 
-  //   },
-  // }
+    },
+  }
 });
