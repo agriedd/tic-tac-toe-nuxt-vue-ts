@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: false,
   app: {
-    baseURL: '/tic-tac-toe-nuxt-vue-ts',
+    baseURL: 'tic-tac-toe-nuxt-vue-ts',
     // buildAssetsDir: 
   },
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
