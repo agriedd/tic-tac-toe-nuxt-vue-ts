@@ -3,8 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   ssr: false,
   app: {
-    baseURL: 'tic-tac-toe-nuxt-vue-ts',
-    // buildAssetsDir: 
+    baseURL: "/tic-tac-toe-nuxt-vue-ts",
+    buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
   },
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   imports: {
@@ -20,15 +20,15 @@ export default defineNuxtConfig({
   },
   nitro: {
     runtimeConfig: {
-      app:{
-        baseURL: 'tic-tac-toe-nuxt-vue-ts',
-      }
+      app: {
+        baseURL: "/tic-tac-toe-nuxt-vue-ts",
+        buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
+      },
     },
     prerender: {
       // crawlLinks: false,
       // routes: [
       // ],
-
     },
-  }
+  },
 });
