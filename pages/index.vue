@@ -17,7 +17,7 @@ const playerTurnUpdated = (value: number) => {
 				Player 2
 			</div>
 			<div>
-				<!-- <GameBoard @update:player-turn="playerTurnUpdated"></GameBoard> -->
+				<GameBoard @update:player-turn="playerTurnUpdated"></GameBoard>
 			</div>
 			<div class="p-6 bg-slate-900 rounded-lg grow transition-all" :class="[
 				{
