@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-  ssr: false,
+  devtools: { enabled: true },
+  ssr: true,
   app: {
     baseURL: "/tic-tac-toe-nuxt-vue-ts",
     buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
@@ -10,9 +10,6 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["composables/**"],
   },
-  // devServer: {
-  //   host: "192.168.1.9",
-  // },
   vite: {
     optimizeDeps: {
       include: ["howler"],
@@ -25,10 +22,11 @@ export default defineNuxtConfig({
         buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
       },
     },
-    prerender: {
-      // crawlLinks: false,
-      // routes: [
-      // ],
-    },
+    prerender: {},
+    experimental: {
+      websocket: true,
+      // tasks: true,
+    }
   },
+  
 });
