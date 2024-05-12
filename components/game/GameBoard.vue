@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import type { BoardCell, BoardCellHistory, Cell, Player } from '~/types/IGameBoard';
 import happyPop from "../../public/sound/happy-pop-2-185287.mp3"
-import papercrackle from "../../public/sound/papercrackle3-36110.mp3"
+// import papercrackle from "../../public/sound/papercrackle3-36110.mp3"
 import winnerSound from "../../public/sound/sound-effect-twinklesparkle-115095.mp3"
 
 const bubble = useSound(happyPop)
-const paper = useSound(papercrackle)
+const paper = useSound(happyPop)
 const win = useSound(winnerSound)
 
-const { vibrate, isSupported } = useVibrate({ pattern: [300, 100, 300] })
+const { vibrate, isSupported } = useVibrate({ pattern: [100] })
+const { vibrate: celebrateVib } = useVibrate({ pattern: [1000, 300] })
 
 const emit = defineEmits<{
 	(e: 'update:player-turn', value: number): void
@@ -49,6 +50,7 @@ const { playerDraw } = useGameplayControl(boards, history, playerTurn, {
 		if(win.isPlaying.value){
 			win.stop()
 		}
+		celebrateVib()
 		win.play()
 	}
 })
