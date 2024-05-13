@@ -11,22 +11,40 @@ const playerTurnUpdated = (value: number) => {
 
 const { $io } = useNuxtApp();
 
-$io.on("on-connect", (event) => { connectionId.value = event.id })
+$io.on("on-connections-update", (event) => { 
+	console.log("🚀 ~ $io.on ~ event:", event)
+	connectionsCount.value = event.count 
+})
+$io.on("on-connect", (event) => { 
+	
+	connectionId.value = event.id
+	$io.emit("wants-connections-count")
 
+	console.log("🚀 ~ $io.on ~ event:", event)
+})
 $io.on("player-on-side", (event) => { 
 	if(connectionId.value === event.id) {
-		alert(event.side)
-	} 
+		console.log("🚀 ~ $io.on ~ event:", event)
+	}
 })
-
 $io.on("waiting-player", () => { waitingPlayer.value = true })
 $io.on("player-disconnect", () => {  })
-$io.on("on-connections-update", (event) => { connectionsCount.value = event.count })
 
 const sendPing = () => {
 	console.log('Click');
 	$io.emit("message", "new message sent");
 }
+onUpdated(()=>{
+	if(!$io.connected){
+		console.log("🚀 ~ onUpdated ~ connecting...")
+		$io.connect()
+	}
+})
+onMounted(()=>{
+	$io.emit("wants-connections-count")
+	$io.emit("wants-connection-id")
+	console.log("🚀 ~ onMounted ~ wants-connection-id:")
+})
 
 </script>
 <template>

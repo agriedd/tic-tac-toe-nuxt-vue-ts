@@ -24,9 +24,8 @@ export default defineNuxtConfig({
     },
     prerender: {},
     experimental: {
-      websocket: true,
+      // websocket: true,
       // tasks: true,
-    }
+    },
   },
-  
 });
