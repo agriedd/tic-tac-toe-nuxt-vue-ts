@@ -1,5 +1,7 @@
 # Tic Tac Toe Nuxt App
 
+Play side by side
+
 ![demo](docs/assets/demo-2024-05-12.gif)
 
 Inspired by this product <https://giiker.com/products/tic-tac-toe-bolt>
