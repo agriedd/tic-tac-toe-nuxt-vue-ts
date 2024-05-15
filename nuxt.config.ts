@@ -28,4 +28,10 @@ export default defineNuxtConfig({
       // tasks: true,
     },
   },
+  runtimeConfig: {
+    public: {
+      // wsBase: 'ws://localhost:4000'
+      wsBase: 'wss://games.gmitdiaspora.org:4000'
+    }
+  }
 });
