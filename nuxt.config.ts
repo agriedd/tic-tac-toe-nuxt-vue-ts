@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     baseURL: "/tic-tac-toe-nuxt-vue-ts",
-    buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
+    // buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
   },
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   imports: {
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
       app: {
         baseURL: "/tic-tac-toe-nuxt-vue-ts",
-        buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
+        // buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
       },
     },
     prerender: {},
@@ -30,8 +30,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      // wsBase: 'ws://localhost:4000'
-      wsBase: 'wss://games.gmitdiaspora.org'
+      wsBase: 'ws://localhost'
+      // wsBase: 'wss://games.gmitdiaspora.org'
     }
   }
 });
