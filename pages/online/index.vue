@@ -137,7 +137,7 @@ const isRedPlayer = computed(()=>{
 				<div class="fixed bottom-0 shadow-2xl bg-black left-0 right-0 top-0 h-full w-full bg-opacity-80 flex flex-col justify-end items-center p-4"
 					v-if="waitingPlayer">
 					<div class="p-4 text-white max-w-sm w-full bg-slate-800 rounded-lg text-sm">
-						Menunggu Pemain Lain...
+						Waiting For other player...
 					</div>
 				</div>
 			</div>
