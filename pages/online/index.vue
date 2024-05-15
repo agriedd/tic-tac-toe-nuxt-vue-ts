@@ -141,7 +141,7 @@ const isRedPlayer = computed(()=>{
 					</div>
 				</div>
 			</div>
-			<div class="relative max-w-14 flex flex-col justify-center text-slate-800">
+			<div class="fixed right-0 max-w-14 h-screen flex flex-col justify-center text-slate-800 select-none pointer-events-none">
 				<div class="absolute rotate-90 w-48 origin-bottom-left text-4xl font-black font-mono -translate-y-[250%] text-center" v-if="isRedPlayer">
 					<span class="text-blue-900">
 						{{ scores.blue }} 
