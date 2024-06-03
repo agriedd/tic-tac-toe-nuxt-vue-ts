@@ -137,9 +137,7 @@ export const useGameConnection = (options?: Options) => {
   };
 
   const disconnect = () => {
-    if (ws?.readyState === ws?.OPEN || ws?.readyState === ws?.CONNECTING || ws?.readyState ===  ws?.CLOSING) {
-      ws?.close()
-    }
+    ws?.close()
   }
   const tryConnect = () => {
     if (ws?.readyState === ws?.CLOSED || !ws) {

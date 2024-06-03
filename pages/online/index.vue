@@ -49,6 +49,9 @@ onMounted(() => {
 onUnmounted(() => {
 	disconnect()
 })
+onBeforeRouteLeave(()=>{
+	disconnect()
+})
 
 const isRedPlayer = computed(()=>{
 	return isPlayer.value && playerSide.value === 'red'
