@@ -4,15 +4,12 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     baseURL: "/tic-tac-toe-nuxt-vue-ts",
-    buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
+    // buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
   },
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   imports: {
     dirs: ["composables/**"],
   },
-  // devServer: {
-  //   host: "192.168.1.9",
-  // },
   vite: {
     optimizeDeps: {
       include: ["howler"],
@@ -22,13 +19,19 @@ export default defineNuxtConfig({
     runtimeConfig: {
       app: {
         baseURL: "/tic-tac-toe-nuxt-vue-ts",
-        buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
+        // buildAssetsDir: "/tic-tac-toe-nuxt-vue-ts/_nuxt",
       },
     },
-    prerender: {
-      // crawlLinks: false,
-      // routes: [
-      // ],
+    prerender: {},
+    experimental: {
+      // websocket: true,
+      // tasks: true,
     },
   },
+  runtimeConfig: {
+    public: {
+      // wsBase: 'ws://localhost'
+      wsBase: 'wss://sunrise-blushing-stilton.glitch.me/'
+    }
+  }
 });
