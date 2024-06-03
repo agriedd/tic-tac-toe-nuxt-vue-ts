@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // wsBase: 'ws://localhost'
-      wsBase: 'wss://games.gmitdiaspora.org'
+      wsBase: 'wss://sunrise-blushing-stilton.glitch.me/'
     }
   }
 });
